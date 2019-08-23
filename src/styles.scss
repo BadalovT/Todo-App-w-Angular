@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.page{
+  &.home{
+    .page-title{
+      .svg{
+        width: 60px;
+        height: 70px;
+        margin-right: 15px;
+      }
+      span{
+
+      }
+    }
+    .example-form{
+      .example-full-width{
+        width: 80%;
+        margin-right: 5px;
+      }
+    }
+  }
+}
