@@ -12,7 +12,7 @@
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Add todos" #newTodo>
           </mat-form-field>
-          <button mat-raised-button color="primary" type="submit" (click)="addToDo(newTodo)">Click me!</button>
+          <button mat-raised-button color="primary" type="submit" (click)="addTodo(newTodo)">Click me!</button>
         </form>
       </div>
     </div>
@@ -31,7 +31,14 @@
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of data.pendings" cdkDrag>
               <img class="svg"  src="assets/svg/clock.svg" alt="">
-              {{item}}</div>
+              <span class="todo-title">{{item.todo}}</span>
+              <div class="button">
+                <button mat-icon-button color="warn"  (click)="removeTodo(item.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="text-center pt-3" *ngIf="data.pendings?.length===0"><small> there no todo</small></div>
           </div>
         </div>
 
@@ -48,7 +55,14 @@
               <div class="example-box" *ngFor="let item of data.inProgress" cdkDrag>
                 <img class="svg" src="assets/svg/hourglass.svg" alt="">
 
-                {{item}}</div>
+                <span class="todo-title">{{item.todo}}</span>
+                <div class="button">
+                  <button mat-icon-button color="warn" (click)="removeTodo(item.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="text-center pt-3" *ngIf="data.inProgress?.length===0"><small> there no todo</small></div>
             </div>
           </div>
 
@@ -65,7 +79,14 @@
               <div class="example-box" *ngFor="let item of data.done" cdkDrag>
                 <img class="svg" src="assets/svg/like.svg" alt="">
 
-                {{item}}</div>
+                <span class="todo-title">{{item.todo}}</span>
+                <div class="button">
+                  <button mat-icon-button color="warn" (click)="removeTodo(item.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="text-center pt-3" *ngIf="data.done?.length===0"><small> there no todo</small></div>
             </div>
           </div>
 
