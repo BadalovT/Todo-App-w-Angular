@@ -60,14 +60,14 @@ export class HomeComponent implements OnInit {
   updateTodo() {
     this.todoService.updateTodo(this.data)
       .subscribe((res) => {
-          console.log(res);
+          this.getAllTodos();
       }, (err) => {
             console.log(err);
         }
       );
   }
   removeTodo(id) {
-    if (confirm ('are yuo sure to delete this todo?')) {
+    if (confirm('are you sure delete this?')) {
       this.todoService.removeTodo(id)
         .subscribe((res) => {
             this.getAllTodos();
